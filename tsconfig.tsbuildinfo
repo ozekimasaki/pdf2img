@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/i18n.ts","./src/main.tsx","./src/shims/pako.ts","./src/types/exifr.d.ts","./src/types/pako.d.ts","./src/utils/exif.ts","./src/utils/pdf.ts"],"version":"5.9.2"}
