@@ -41,3 +41,31 @@ body{margin:0;font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Aria
 
 .toolbar{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}
 .footer{margin-top:auto;text-align:center;color:var(--muted);padding:20px}
+
+/* Light theme overrides */
+html[data-theme="light"]{
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --muted:#62718a;
+  --text:#0a0d1a;
+  --primary:#7c9cff;
+  --primary-2:#36c3ff;
+  --danger:#ff4d4d;
+}
+
+html[data-theme="light"] body{background:linear-gradient(135deg,#f7f9fc 0%,#f3f6fb 60%,#f0f4fb 100%);color:var(--text)}
+
+html[data-theme="light"] .panel{background:rgba(255,255,255,.86);border:1px solid rgba(0,0,0,.06)}
+html[data-theme="light"] .tips{background:rgba(255,255,255,.78);border:1px solid rgba(0,0,0,.06)}
+
+html[data-theme="light"] .mode-item{background:#eef2fb;border:1px solid rgba(0,0,0,.08);color:var(--muted)}
+html[data-theme="light"] .mode-item.active{color:var(--text);border-color:rgba(124,156,255,.5);box-shadow:0 0 0 3px rgba(124,156,255,.15)}
+
+html[data-theme="light"] .dropzone{border-color:rgba(0,0,0,.12);background:rgba(0,0,0,.02)}
+html[data-theme="light"] .dropzone:hover{border-color:rgba(124,156,255,.5);background:rgba(124,156,255,.12)}
+
+html[data-theme="light"] .list-item{background:#ffffff;border:1px solid rgba(0,0,0,.08)}
+html[data-theme="light"] .thumb{border:1px solid rgba(0,0,0,.10)}
+
+html[data-theme="light"] .btn.ghost{color:var(--text);border:1px solid rgba(0,0,0,.16)}
+html[data-theme="light"] .btn.ghost.danger{border-color:rgba(255,103,103,.55);color:#c14949}

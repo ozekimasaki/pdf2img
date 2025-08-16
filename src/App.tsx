@@ -210,7 +210,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="footer">© {new Date().getFullYear()} Img2PDF</footer>
+      <footer className="footer">© {new Date().getFullYear()} Img2pdf</footer>
     </div>
   );
 }

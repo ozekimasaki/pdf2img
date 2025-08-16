@@ -23,7 +23,7 @@ export const i18n: Record<Lang, {
   language: string;
 }> = {
   en: {
-    title: 'Img2PDF',
+    title: 'Img2pdf',
     subtitle: 'Convert JPG / PNG / GIF / WebP / AVIF / BMP / SVG / JFIF / ICO to PDF (single or merge)',
     mode_merge: 'Merge',
     mode_single: 'Single',
@@ -45,7 +45,7 @@ export const i18n: Record<Lang, {
     language: 'Language'
   },
   ja: {
-    title: 'Img2PDF',
+    title: 'Img2pdf',
     subtitle: 'JPG / PNG / GIF / WebP / AVIF / BMP / SVG / JFIF / ICO を PDF に変換（単体・結合）',
     mode_merge: '複数結合',
     mode_single: '単体変換',
@@ -67,7 +67,7 @@ export const i18n: Record<Lang, {
     language: '言語'
   },
   zh: {
-    title: 'Img2PDF',
+    title: 'Img2pdf',
     subtitle: '将 JPG / PNG / GIF / WebP / AVIF / BMP / SVG / JFIF / ICO 转换为 PDF（单个/合并）',
     mode_merge: '合并',
     mode_single: '单个转换',
