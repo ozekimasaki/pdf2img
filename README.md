@@ -28,6 +28,27 @@ npm run preview
 - Build command: `npm run build`
 - Build output directory: `dist`
 
+## Cloudflare Workers
+
+以下の手順で Workers（Static Assets）にデプロイできます。
+
+1. ログイン（初回のみ）
+   ```bash
+   npx wrangler login
+   ```
+2. ビルド
+   ```bash
+   npm run build
+   ```
+3. デプロイ
+   ```bash
+   npx wrangler deploy
+   ```
+
+補足:
+- ルートに `wrangler.jsonc` を配置済み（`assets.directory=./dist`、`not_found_handling=single-page-application`）。
+- ローカル確認は `npx wrangler dev`（静的アセットの挙動を確認）。開発時は従来どおり `npm run dev`（Vite）も利用可能です。
+
 ## 注意
 - アニメーション GIF / WebP / AVIF は先頭フレームを静止画として取り込みます。
 - 大きな画像はブラウザメモリを消費します。大量変換時は段階的に実行してください。
