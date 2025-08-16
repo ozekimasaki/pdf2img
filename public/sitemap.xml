@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://img2pdf.umaibo.dev/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://img2pdf.umaibo.dev/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://img2pdf.umaibo.dev/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://img2pdf.umaibo.dev/?lang=zh" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://img2pdf.umaibo.dev/" />
     <lastmod>2025-08-16T16:09:26Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

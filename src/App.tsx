@@ -35,6 +35,36 @@ export default function App() {
     try { localStorage.setItem('lang', lang); } catch {}
     // Update document title per language
     try { document.title = `${i18n[lang].title} - ${i18n[lang].subtitle}`; } catch {}
+
+    // Update meta descriptions/titles and og:locale for SEO per language
+    try {
+      const tdata = i18n[lang];
+      const title = `${tdata.title} - ${tdata.subtitle}`;
+      const desc = tdata.meta_description;
+
+      const setMeta = (selector: string, content: string) => {
+        const el = document.head.querySelector(selector) as HTMLMetaElement | null;
+        if (el) el.setAttribute('content', content);
+      };
+
+      setMeta('meta[name="description"]', desc);
+      setMeta('meta[property="og:description"]', desc);
+      setMeta('meta[name="twitter:description"]', desc);
+      setMeta('meta[property="og:title"]', title);
+      setMeta('meta[name="twitter:title"]', title);
+
+      const localeMap: Record<Lang, string> = { ja: 'ja_JP', en: 'en_US', zh: 'zh_CN' };
+      const ogLocale = document.head.querySelector('meta[property="og:locale"]');
+      if (ogLocale) ogLocale.setAttribute('content', localeMap[lang]);
+
+      // Update canonical and og:url to reflect current language URL
+      const base = (typeof location !== 'undefined') ? `${location.origin}${location.pathname}` : 'https://img2pdf.umaibo.dev/';
+      const currentUrl = lang === 'ja' ? base : `${base}?lang=${lang}`;
+      const canonical = document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+      if (canonical) canonical.setAttribute('href', currentUrl);
+      const ogUrl = document.head.querySelector('meta[property="og:url"]');
+      if (ogUrl) (ogUrl as HTMLMetaElement).setAttribute('content', currentUrl);
+    } catch {}
   }, [lang]);
 
   const onFiles = useCallback((files: FileList | null) => {

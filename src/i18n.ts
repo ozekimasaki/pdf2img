@@ -3,6 +3,7 @@ export type Lang = 'en' | 'ja' | 'zh';
 export const i18n: Record<Lang, {
   title: string;
   subtitle: string;
+  meta_description: string;
   mode_merge: string;
   mode_single: string;
   drop_prompt: string;
@@ -25,6 +26,7 @@ export const i18n: Record<Lang, {
   en: {
     title: 'Img2pdf',
     subtitle: 'Convert JPG / PNG / GIF / WebP / AVIF / BMP / SVG / JFIF / ICO to PDF (single or merge)',
+    meta_description: 'Convert images to PDF (single/merge). Supports JPG, PNG, GIF, WebP, AVIF, BMP, SVG, JFIF, ICO. No upload, processed in your browser. Free, fast, and secure.',
     mode_merge: 'Merge',
     mode_single: 'Single',
     drop_prompt: 'Drag & drop here or click to select',
@@ -47,6 +49,7 @@ export const i18n: Record<Lang, {
   ja: {
     title: 'Img2pdf',
     subtitle: 'JPG / PNG / GIF / WebP / AVIF / BMP / SVG / JFIF / ICO を PDF に変換（単体・結合）',
+    meta_description: '画像をPDFに変換（単体/結合）。JPG・PNG・GIF・WebP・AVIF・BMP・SVG・JFIF・ICO対応。アップロード不要でブラウザ内処理。無料・高速・安全。',
     mode_merge: '複数結合',
     mode_single: '単体変換',
     drop_prompt: 'ここにドラッグ&ドロップ または クリックして選択',
@@ -69,6 +72,7 @@ export const i18n: Record<Lang, {
   zh: {
     title: 'Img2pdf',
     subtitle: '将 JPG / PNG / GIF / WebP / AVIF / BMP / SVG / JFIF / ICO 转换为 PDF（单个/合并）',
+    meta_description: '将图片转换为PDF（单个/合并）。支持 JPG、PNG、GIF、WebP、AVIF、BMP、SVG、JFIF、ICO。无需上传，浏览器内处理。免费、快速、安全。',
     mode_merge: '合并',
     mode_single: '单个转换',
     drop_prompt: '将文件拖放到此处或点击选择',
@@ -91,9 +95,17 @@ export const i18n: Record<Lang, {
 };
 
 export function getDefaultLang(): Lang {
+  // 1) URL query (?lang=) takes precedence
+  const fromQuery = (typeof location !== 'undefined' && location.search)
+    ? (new URLSearchParams(location.search).get('lang') as Lang | null)
+    : null;
+  if (fromQuery && (fromQuery === 'en' || fromQuery === 'ja' || fromQuery === 'zh')) return fromQuery;
+
+  // 2) localStorage
   const stored = (typeof localStorage !== 'undefined') ? localStorage.getItem('lang') as Lang | null : null;
   if (stored && (stored === 'en' || stored === 'ja' || stored === 'zh')) return stored;
-  // Fallback: detect from browser language
+
+  // 3) Fallback: detect from browser language
   const nav = (typeof navigator !== 'undefined' && navigator.language) ? navigator.language.toLowerCase() : '';
   if (nav.startsWith('ja')) return 'ja';
   if (nav.startsWith('zh')) return 'zh';
