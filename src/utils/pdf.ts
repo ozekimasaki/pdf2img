@@ -33,8 +33,8 @@ export async function createMergedPdf(files: File[]): Promise<ArrayBuffer> {
 }
 
 function pickMimeFromFile(file: File): 'image/png' | 'image/jpeg' {
-  // Use JPEG for JPEG sources; otherwise PNG (keeps transparency when present)
-  return /jpe?g$/i.test(file.type) || /\.(jpe?g)$/i.test(file.name) ? 'image/jpeg' : 'image/png';
+  // Use JPEG for JPEG/JFIF sources; otherwise PNG (keeps transparency when present)
+  return /jpe?g$/i.test(file.type) || /\.(jpe?g|jfif)$/i.test(file.name) ? 'image/jpeg' : 'image/png';
 }
 
 async function canvasToBytes(canvas: HTMLCanvasElement, mime: 'image/png' | 'image/jpeg'): Promise<Uint8Array> {

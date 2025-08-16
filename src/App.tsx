@@ -4,7 +4,7 @@ import { saveAs } from 'file-saver';
 import { createMergedPdf, createSinglePdf } from './utils/pdf';
 import { i18n, getDefaultLang, type Lang } from './i18n';
 
-const ACCEPT = '.jpg,.jpeg,.png,.gif,.webp';
+const ACCEPT = '.jpg,.jpeg,.png,.gif,.webp,.avif,.bmp,.svg,.jfif,.ico';
 
 type Item = {
   id: string;
@@ -39,7 +39,7 @@ export default function App() {
 
   const onFiles = useCallback((files: FileList | null) => {
     if (!files) return;
-    const accepted = Array.from(files).filter((f) => /\.(jpe?g|png|gif|webp)$/i.test(f.name));
+    const accepted = Array.from(files).filter((f) => /\.(jpe?g|png|gif|webp|avif|bmp|svg|jfif|ico)$/i.test(f.name));
     setItems((prev) => {
       const dedup = accepted.filter((f) => !prev.some((p) => p.file.name === f.name && p.file.lastModified === f.lastModified));
       const mapped: Item[] = dedup.map((file) => ({
